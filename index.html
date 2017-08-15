@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+    <title>demo</title>
+    <link rel="stylesheet" href="/dist/css/common.css">
+</head>
+
+<body>
+    <div id="app" class="container">
+        <div class="page-wrapper">
+            <page-header></page-header>
+            <page-play></page-play>
+            <div class="page-content">
+                <page-detail></page-detail>
+            </div>
+            <div class="page-footer">
+                <page-playing></page-playing>
+            </div>
+        </div>
+    </div>
+    <template id="page-header">
+        <div class="page-header">
+            <div class="header-mask"></div>            
+            <div class="header-text">
+                <strong>罗辑思维</strong><br>
+                <small>和你一起终身学习</small>
+            </div>
+            <page-nav></page-nav>
+        </div>
+    </template>
+    <template id="page-nav">
+        <div class="page-nav">
+            <div class="nav-item" style="border-right:1px solid rgba(255, 255, 255, 0.5);">
+                <a href="javascript:;">
+                    <img src="./images/1.png" />
+                    <span>搜索</span>
+                </a>
+            </div> 
+            <div class="nav-item" style="border-right:1px solid rgba(255, 255, 255, 0.5);">
+                <a href="javascript:;">
+                    <img src="./images/2.png" />
+                    <span>详情</span>
+                </a>
+            </div> 
+            <div class="nav-item" style="border-right:1px solid rgba(255, 255, 255, 0.5);">
+                <a href="javascript:;">
+                    <img src="./images/3.png" />
+                    <span>下载</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="javascript:;">
+                    <img src="./images/4.png" />
+                    <span>分享</span>
+                </a>
+            </div>
+        </div>
+    </template>
+    <template id="page-play">
+        <div class="page-play">
+            <img src="./images/5.png" alt="" id="play-l"/>
+            <span class="play-left">播放全部</span>
+            <span>已更新324条</span>
+            <img src="./images/6.png" alt="" id="play-r"/>
+            <span class="paly-right">倒序</span>
+        </div>
+    </template>
+    <template id="page-detail">
+       <ul class="item-list">
+               <li class="item-info">
+                   <img src="./images/5.1.png" alt="暂停" id="play-icon">
+                   <p class="item-action">
+                       <span class="item-title">第319期 | 太监为何干政？</span><br>
+                       <span class="item-record">今天<span>时长10:02</span>已播完</span>
+                   </p>
+                   <img src="./images/7.png" alt="文档">
+                   <img src="./images/8.png" alt="更多">
+               </li>
+               <li class="item-info">
+                   <img src="./images/5.1.png" alt="暂停" id="play-icon">
+                   <p class="item-action">
+                       <span class="item-title">罗胖精选 | 如何管理我的老板乔布斯</span><br>
+                       <span class="item-record">08-12<span>时长13:14</span>已播完</span>
+                   </p>
+                   <img src="./images/7.png" alt="文档">
+                   <img src="./images/8.png" alt="更多">
+               </li>
+               <li class="item-info">
+                   <img src="./images/5.1.png" alt="暂停" id="play-icon">
+                   <p class="item-action">
+                       <span class="item-title">第318 | 远见和权谋</span><br>
+                       <span class="item-record">08-11<span>时长09:55</span>已播27%</span>
+                   </p>
+                   <img src="./images/7.png" alt="文档">
+                   <img src="./images/8.png" alt="更多">
+               </li>
+               <li class="item-info">
+                   <img src="./images/5.1.png" alt="暂停" id="play-icon">
+                   <p class="item-action">
+                       <span class="item-title">第317期 | 同构学习法</span><br>
+                       <span class="item-record">08-10<span>时长09:49</span></span>
+                   </p>
+                   <img src="./images/7.png" alt="文档">
+                   <img src="./images/8.png" alt="更多">
+               </li>
+               <li class="item-info">
+                   <img src="./images/5.1.png" alt="暂停" id="play-icon">
+                   <p class="item-action">
+                       <span class="item-title">第316期 | 从经典到经验</span><br>
+                       <span class="item-record">08-09<span>时长10:03</span>已播放10%</span>
+                   </p>
+                    <img src="./images/7.png" alt="文档">
+                    <img src="./images/8.png" alt="更多">
+               </li>
+                <li class="item-info">
+                   <img src="./images/5.1.png" alt="暂停" id="play-icon">
+                   <p class="item-action">
+                       <span class="item-title">第315期 | 小高潮</span><br>
+                       <span class="item-record">08-08<span>时长09:52</span></span>
+                   </p>
+                    <img src="./images/7.png" alt="文档">
+                    <img src="./images/8.png" alt="更多">
+               </li>
+               <li class="item-info">
+                   <img src="./images/5.1.png" alt="暂停" id="play-icon">
+                   <p class="item-action">
+                       <span class="item-title">第314期 | 大高潮</span><br>
+                       <span class="item-record">08-07<span>时长09:21</span></span>
+                   </p>
+                    <img src="./images/7.png" alt="文档">
+                    <img src="./images/8.png" alt="更多">
+               </li>
+           </ul>
+    </template>
+    <template id="page-playing">
+        <div class="page-playing">
+        <img src="./images/9.png" alt="封面" id="play-man">
+        <p>
+        <span class="item-t">第318期 | 远见和谋略</span><br>
+        <span class="item-r">09:55<span>-罗辑思维</span></span>
+        </p>
+        <img src="./images/10.png" alt="展开" id="log1">
+        <img src="./images/5.png" alt="播放" id="log2">
+        </div>
+    </template>
+    <script src="https://cdn.bootcss.com/vue/2.3.2/vue.min.js"></script>
+    <script src="/dist/js/common.js"></script>
+
+</body>
+
+</html>

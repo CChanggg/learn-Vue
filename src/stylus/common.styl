@@ -1,0 +1,186 @@
+$base_font = 'Open Sans', sans-serif
+$header_image = 'http://piccdn.igetget.com/img/201703/02/201703021606151488005887.jpg@750w'
+*
+    margin 0
+    padding 0
+html, body
+    min-height 100%
+    height 100%
+body 
+    width 10rem
+    font-family $base_font
+    overflow hidden
+.page-wrapper
+    background #fff
+    position relative
+    height 100%
+    display flex
+    // flex-direction column
+.page-header
+    background url($header_image) no-repeat
+    background-size cover
+    position absolute
+    top 0
+    left 0
+    overflow hidden
+    z-index 1
+    width 100%
+    height 5.59259rem
+    .header-mask
+        background rgba(0, 0, 0, .3)
+        position absolute
+        z-index 2
+        width 100%
+        height 5.5925rem
+    .header-text
+        position absolute
+        z-index 3
+        top 2.96rem
+        left 0.407407rem
+        strong
+            font-size 0.555556rem
+            color white
+        small
+            font-size 0.333333rem
+            color rgba(255, 255, 255, .6)
+    .page-nav
+        position: absolute
+        z-index 99
+        bottom 0.4rem
+        display flex
+        vertical-align center
+        .nav-item
+            width 2.5rem
+            a             
+                text-decoration none
+                display block
+                text-align center  
+                display flex              
+                color white
+                margin-left 0.55rem    
+                span
+                    display inline-block                    
+                    font-size 0.37037rem
+                img
+                    display inline-block  
+                    margin-right 0.1rem                  
+                    height 0.5rem
+                    width 0.5rem
+.page-play
+    position absolute
+    top 5.5925rem
+    height 1.38rem
+    width 10rem
+    color #6B6A6A
+    background white
+    box-sizing border-box
+    display flex
+    align-items center
+    border-bottom 1px solid #EAEAEA
+    #play-l
+        width 0.6rem
+        height 0.6rem
+        padding 0.3rem 0.2rem 0.3rem 0.4rem
+    #play-r
+        width 0.6rem
+        height 0.6rem
+        padding-right 0.2rem
+        padding-left 3.5rem
+        
+    .play-left
+        padding-right 0.3rem
+    .play-right
+        // padding-right 0.6rem
+.page-content
+    position absolute
+    z-index 1 
+    height 9.5rem
+    background white
+    position absolute
+    top 7rem
+    left 0
+    width 100%
+    overflow-y scroll  
+    overflow-x hidden
+    .item-list
+        position absolute
+        width 10rem
+        height 10rem
+        margin-left 0.2rem 
+        .item-info
+            height 1.7rem
+            padding 0.3rem 0.3rem 0.3rem 0rem
+            box-sizing border-box
+            display flex
+            justify-content center
+            align-items center
+            border-bottom 1px solid #F2F2F2
+            img
+                width 0.6rem
+                height 0.6rem
+                margin 0 0.2rem
+            #play-icon
+                width 0.8rem
+                height 0.8rem
+                display inline-block
+                margin 0 0.2rem
+            p
+                flex 1
+                overflow hidden
+                text-overflow ellipsis
+                float left
+                .item-title
+                    font-size 0.37rem
+                    line-height 0.5rem
+                    color #B0B0B0
+                .item-record
+                    font-size 0.27rem
+                    color #ccc
+                    display inline-block
+                    margin-top 0.15rem
+                    span
+                        margin 0 0.2rem
+.page-content::-webkit-scrollbar 
+    display none 
+.page-footer
+    .page-playing
+        position absolute
+        box-sizing border-box
+        display flex
+        align-items center
+        bottom 0
+        width 10rem 
+        height 1.3703rem
+        top 16.5rem   
+        background #EEF3F1
+        #log1
+            width 0.9rem
+            height 0.9rem
+            padding 0.3rem 0.4rem 0.3rem 2.7rem
+        #log2
+            width 0.9rem
+            height 0.9rem
+            padding 0.3rem 0.1rem 0.3rem 0 
+        #play-man
+            width 0.9rem
+            height 0.9rem
+            padding: 0.2rem
+        .item-t
+            font-size 0.37rem
+            line-height 0.5rem
+            color #8D9290
+        .item-r
+            font-size 0.3rem
+            color #A9AEAD
+            display inline-block
+            margin-top 0.1rem
+            span
+                padding-left 0.2rem
+                
+
+
+
+
+
+            
+
