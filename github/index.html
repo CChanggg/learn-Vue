@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>github </title>
+</head>
+<style>
+    #demo {
+        font-family: 'Helvetica', Arial, sans-serif;
+    }
+    
+    a {
+        text-decoration: none;
+        color: #f66;
+    }
+    
+    li {
+        line-height: 1.5em;
+        margin-bottom: 20px;
+    }
+    
+    .author,
+    .date {
+        font-weight: bold;
+    }
+</style>
+
+<body>
+    <div id="demo">
+        <h1>Latest Vue.js Commits</h1>
+        <template v-for="branch in branches">
+            <input type="radio" :id="branch" :value="branch" name="branch" v-model="currentBranch"/>
+            <label :for="branch">{{branch}}</label>
+        </template>
+        <p>vue.js/vue@{{currentBranch}}</p>
+        <ul>
+            <li v-for="record in commits">
+                <a :href="record.html_url" target="_blank" class="commit">{{record.sha.slice(0,7)}}</a> - <span class="message ,m
+            </li>
+        </ul>
+    </div>
+    <script src=" https://unpkg.com/vue@2.4.2/dist/vue.js "></script>
+    <script>
+        let apiURL = 'https://api.github.com/repos/vuejs/vue/commits?per_page=3&sha='
+        let demo = new Vue({
+            el: "#demo ",
+            data: {
+                branches: ["master ", "dev "],
+                currentBranch: "master ",
+                commits: []
+            },
+            // 页面打开的时候 获取GitHub的最佳时机
+            created: function() {
+                this.fetchData()
+            },
+            watch: {
+                currentBranch: 'fetchData'
+            },
+            filters: {
+                formatDate: function(v) {
+                    return v.replace(/T|Z/g, ' ')
+                },
+                truncate: function(v) {
+                    return v.trim()
+                }
+            },
+            methods: {
+                fetchData: function() {
+                    // console.log(`${apiURL}${this.currentBranch}`);
+                    fetch(`${apiURL}${this.currentBranch}`)
+                        .then(data => data.json())
+                        .then(data => {
+                            // console.log(data)
+                            this.commits = data
+                        })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
