@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>grid table</title>
+</head>
+<style>
+    body {
+        font-family: Helvetica Neue, Arial, sans-serif;
+        font-size: 14px;
+        color: #444;
+    }
+    
+    table {
+        border: 2px solid #42b983;
+        border-radius: 3px;
+        background-color: #fff;
+    }
+    
+    th {
+        background-color: #42b983;
+        color: rgba(255, 255, 255, 0.66);
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    
+    td {
+        background-color: #f9f9f9;
+    }
+    
+    th,
+    td {
+        min-width: 120px;
+        padding: 10px 20px;
+    }
+    
+    th.active {
+        color: #fff;
+    }
+    
+    th.active .arrow {
+        opacity: 1;
+    }
+    
+    .arrow {
+        display: inline-block;
+        vertical-align: middle;
+        width: 0;
+        height: 0;
+        margin-left: 5px;
+        opacity: 0.66;
+    }
+    
+    .arrow.asc {
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-bottom: 4px solid #fff;
+    }
+    
+    .arrow.dsc {
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 4px solid #fff;
+    }
+</style>
+
+<body>
+    <script type="text/x-template" id="grid-template">
+        <table>
+            <thead>
+                <tr>
+                    <th v-for="key in columns" @click="sortBy(key)" :class="{active:sortKey == key}">
+                        {{key}}
+                        <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
+                    </span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="entry in filteredData">
+                    <td v-for="key in columns">
+                        {{entry[key]}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </script>
+
+    <div id="demo">
+        <form action="" id="search">
+            Search <input name="query" v-model="searchQuery">
+        </form>
+        <demo-grid :data="gridData" :filter-key="searchQuery" :columns="gridColumns">
+        </demo-grid>
+    </div>
+    <script src=" https://unpkg.com/vue@2.4.2/dist/vue.js "></script>
+    <script>
+        // UI状态 State
+        // 全局组件
+        Vue.component('demo-grid', {
+                template: '#grid-template',
+                computed: {
+                    filteredData: function() {
+                        var sortKey = this.sortKey
+                        var filterKey = this.filterKey && this.filterKey.toLowerCase()
+                        var order = this.sortOrders[sortKey] || 1
+                        var data = this.data
+                        if (filterKey) {
+                            data = data.filter(function(row) {
+                                return Object.keys(row).some(function(key) {
+                                    return String(row[key]).toLowerCase().indexOf(filterKey) > -1
+                                })
+                            })
+                        }
+                        if (sortKey) {
+                            data = data.slice().sort(function(a, b) {
+                                a = a[sortKey]
+                                b = b[sortKey]
+                                return (a === b ? 0 : a > b ? 1 : -1) * order
+                            })
+                        }
+                        return data
+                    }
+                },
+                methods: {
+                    sortBy: function(key) {
+                        this.sortKey = key
+                        this.sortOrders[key] = this.sortOrders[key] * -1
+                    }
+                },
+                props: {
+                    filterKey: String, //定义变量 驼峰式命名
+                    data: Array,
+                    columns: Array
+                },
+                data: function() {
+                    // 大部分的数据都交给父组件管理
+                    // 组件内部也可以有自己的数据 叫做组件数据 不跟api相关 跟兄弟节点，父节点无瓜葛的
+                    // 将父组件传递过来的数据，进行下修饰和重组，一定没有改变
+                    var sortOrders = {}
+                    this.columns.forEach(function(key) {
+                        sortOrders[key] = 1
+                    })
+                    return {
+                        sortKey: '',
+                        sortOrders: sortOrders
+                    }
+                }
+            })
+            // 数据时MVVM的命脉，钱，都归大人管，数据只在一处，界面和数据交流（backend ajax API）
+            // 到处有接口？ 很那管理
+        var demo = new Vue({
+            el: '#demo',
+            data: {
+                searchQuery: '',
+                gridColumns: [
+                    'name',
+                    'power'
+                ],
+                gridData: [{
+                    name: 'Chuck Norris',
+                    power: Infinity
+                }, {
+                    name: 'Bruce Lee',
+                    power: 9000
+                }, {
+                    name: 'Jackie Chan',
+                    power: 7000
+                }, {
+                    name: 'Jet Li',
+                    power: 8000
+                }]
+            }
+        })
+    </script>
+</body>
+
+</html>
